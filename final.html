@@ -220,10 +220,19 @@ ${i}`),b(i)}function $e(n,e=!1){return Ko(zo(n),An(),Pn(),e)}class Yo extends fe
 
 </style></head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="家庭支持中心：希望的旅程" startnode="18" creator="Twine" creator-version="2.10.0" format="Chapbook" format-version="2.3.0" ifid="D674A8E5-F0E4-4BC8-A478-8E20E0A4FD39" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Potta+One&family=RocknRoll+One&family=Zen+Old+Mincho&display=swap');
 
-.font_potta{
-    font-family: "Potta One", serif;
+.font_potta {
+    font-family: "Potta One", serif; 
     font-style: normal;
+    font-weight: normal;
 }
+
+/* 若主字體不可用，則加粗 */
+@supports not (font-family: "Potta One") {
+    .font_potta {
+        font-weight: bold;
+    }
+}
+
 img{
     max-width: 300px;
     max-height: 300px;
