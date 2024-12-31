@@ -220,6 +220,8 @@ ${i}`),b(i)}function $e(n,e=!1){return Ko(zo(n),An(),Pn(),e)}class Yo extends fe
 
 </style></head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="家庭支持中心：希望的旅程" startnode="18" creator="Twine" creator-version="2.10.0" format="Chapbook" format-version="2.3.0" ifid="D674A8E5-F0E4-4BC8-A478-8E20E0A4FD39" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Potta+One&family=RocknRoll+One&family=Zen+Old+Mincho&display=swap');
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
 .font_potta {
     font-family: "Potta One", serif; 
     font-style: normal;
@@ -280,7 +282,9 @@ img{
     right: 55px;
     text-align:right; 
     position:relative;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// 加載 confetti 庫
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+// 加載 confetti 庫
 var script = document.createElement('script');
 script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
 document.head.appendChild(script);
@@ -406,29 +410,61 @@ function launchFireworks() {
 你想像孩子們在色彩繽紛的畫紙上揮灑創意，家長在旁指導與陪伴，笑聲與掌聲交織成一首溫暖的樂章。還有那共同完成拼圖或手工品的瞬間，不僅鍛煉了合作的默契，更留下了珍貴的回憶。你深信，這些課程不僅能拉近親子間的距離，還能成為家庭支持中心的一張金字招牌，吸引更多家庭加入這場溫馨的旅程。&lt;p&gt;
 &lt;img src=&quot;img2/10.jpg&quot;&gt;
 
-&lt;div class=&quot;next_page&quot;&gt;[[開始建立團隊|Team Building]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="結束" tags="" position="1575,575" size="100,100">&lt;script&gt;
-launchFireworks();
-&lt;/script&gt;
-
-感謝 {playerName} 參與這段旅程。&lt;p&gt;
+&lt;div class=&quot;next_page&quot;&gt;[[開始建立團隊|Team Building]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="結束" tags="" position="1575,575" size="100,100">感謝 {playerName} 參與這段旅程。&lt;p&gt;
 
 &lt;div class=&quot;font_potta&quot;&gt;「家長需要的支持，不僅是課程或教育策略，更重要的是，全人的關懷！」&lt;/div&gt;&lt;p&gt;
 
-
 您的總分為：{$score} 分&lt;p&gt;
+
+&lt;script&gt;
+        // 確保 confetti 函數已加載後執行煙火
+        if (typeof confetti !== &quot;undefined&quot;) {
+            launchFireworks();
+        } else {
+            var script = document.createElement(&#39;script&#39;);
+            script.src = &quot;https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js&quot;;
+            script.onload = function() {
+                launchFireworks();
+            };
+            document.head.appendChild(script);
+        }
+
+        // 定義煙火效果的詳細配置
+        function launchFireworks() {
+            confetti({
+                particleCount: 200,
+                angle: 90,
+                spread: 70,
+                startVelocity: 55,
+                decay: 0.9,
+                gravity: 1,
+                origin: { x: 0.5, y: 0.7 },
+                colors: [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;], // 煙火顏色
+                shapes: [&#39;circle&#39;, &#39;square&#39;], // 使用圓形和方形
+                scalar: 1.2,
+                zIndex: 9999
+            }).then(() =&gt; {
+                console.log(&#39;煙火效果完成！&#39;);
+            }).catch((error) =&gt; {
+                console.error(&#39;煙火效果錯誤：&#39;, error);
+            });
+        }
+    &lt;/script&gt;
+
 [if $score == 100]
-    &lt;p style=&quot; font-weight: bold;&quot;&gt;你拿到了滿分，恭喜！&lt;/p&gt;
+    &lt;p style=&quot;font-weight: bold;&quot;&gt;你拿到了滿分，恭喜！&lt;/p&gt;
 [else]
-   &lt;p&gt;看來你還可以做得更好&lt;/p&gt;
+    &lt;p&gt;看來你還可以做得更好&lt;/p&gt;
 [continue]
 
 &lt;img src=&quot;img2/19.jpg&quot;&gt;&lt;p&gt;
-
 </tw-passagedata><tw-passagedata pid="18" name="首頁" tags="" position="100,275" size="100,100">$score: 20
 --
 &lt;div style=&quot;text-align:center;font-size:200%;&quot;&gt;
 &lt;div class=&quot;font_potta&quot;&gt;
-期末報告 家庭支持中心訪談&lt;/div&gt;&lt;/div&gt;&lt;p&gt;
+&lt;div class=&quot;animate__animated animate__shakeY&quot;&gt;
+期末報告 家庭支持中心訪談
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;
 
 &lt;div class=&quot;next_page&quot;&gt;[[下一頁|組員名單]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="組員名單" tags="" position="375,350" size="100,100">&lt;div style=&quot;margin-left:6%&quot;&gt;
 &lt;div style=&quot;font-weight:bold;&quot; class=&quot;font_potta&quot;&gt;第一組&lt;/div&gt;&lt;p&gt;
