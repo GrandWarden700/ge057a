@@ -280,7 +280,50 @@ img{
     right: 55px;
     text-align:right; 
     position:relative;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="375,525" size="100,100">歡迎玩家「&lt;h style=&quot;font-weight: bold;&quot;&gt;{playerName}&lt;/h&gt;」進入遊戲🤩&lt;p&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// 加載 confetti 庫
+var script = document.createElement('script');
+script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
+document.head.appendChild(script);
+
+// 定義煙火效果
+var count = 200;
+var defaults = {
+  origin: { y: 0.7 }
+};
+
+function fire(particleRatio, opts) {
+  confetti({
+    ...defaults,
+    ...opts,
+    particleCount: Math.floor(count * particleRatio)
+  });
+}
+
+function launchFireworks() {
+  fire(0.25, {
+    spread: 26,
+    startVelocity: 55,
+  });
+  fire(0.2, {
+    spread: 60,
+  });
+  fire(0.35, {
+    spread: 100,
+    decay: 0.91,
+    scalar: 0.8
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 25,
+    decay: 0.92,
+    scalar: 1.2
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 45,
+  });
+}
+</script><tw-passagedata pid="1" name="Start" tags="" position="375,525" size="100,100">歡迎玩家「&lt;h style=&quot;font-weight: bold;&quot;&gt;{playerName}&lt;/h&gt;」進入遊戲🤩&lt;p&gt;
 故事開始...&lt;p&gt;
 2017年，林初穗老師站在窗邊，目光越過校園的喧囂，望向遠方的藍天。她的腦海中浮現著一個想法，一個對家庭充滿希望的構想。在她的眼中，那不僅僅是一個夢想，而是一個改變命運的契機。她堅信，透過專業的支援與溫暖的陪伴，可以為無數家庭帶來一線光明。這樣的信念，成為她心中燃燒的火焰，也預示了一個全新旅程的開始。&lt;p&gt;
 
@@ -363,7 +406,11 @@ img{
 你想像孩子們在色彩繽紛的畫紙上揮灑創意，家長在旁指導與陪伴，笑聲與掌聲交織成一首溫暖的樂章。還有那共同完成拼圖或手工品的瞬間，不僅鍛煉了合作的默契，更留下了珍貴的回憶。你深信，這些課程不僅能拉近親子間的距離，還能成為家庭支持中心的一張金字招牌，吸引更多家庭加入這場溫馨的旅程。&lt;p&gt;
 &lt;img src=&quot;img2/10.jpg&quot;&gt;
 
-&lt;div class=&quot;next_page&quot;&gt;[[開始建立團隊|Team Building]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="結束" tags="" position="1575,575" size="100,100">感謝 {playerName} 參與這段旅程。&lt;p&gt;
+&lt;div class=&quot;next_page&quot;&gt;[[開始建立團隊|Team Building]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="結束" tags="" position="1575,575" size="100,100">&lt;script&gt;
+launchFireworks();
+&lt;/script&gt;
+
+感謝 {playerName} 參與這段旅程。&lt;p&gt;
 
 &lt;div class=&quot;font_potta&quot;&gt;「家長需要的支持，不僅是課程或教育策略，更重要的是，全人的關懷！」&lt;/div&gt;&lt;p&gt;
 
